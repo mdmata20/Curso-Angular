@@ -1,4 +1,23 @@
+<h1>NGClass & NgStyle</h1>
+<input type="text" #nameinput4 = "ngModel" [(ngModel)] = "persona.Nombre"/>
+<hr class="line-error"  
+  [ngClass]="{
+    'valid': nameinput4.valid,
+    'invalid': nameinput4.invalid
+  }"
+/>
+<p class="mensaje-error" [class.invalid]="nameinput4.invalid">
+  Se necesita un valor.
+</p>
+
 <h1>Arreglos</h1>
+<div class="products--grid">
+  <div *ngFor="let product of products">
+    <img [width]="250" [src]="product.image" alt="imge">
+    <h2>{{product.price}}</h2>
+    <p>{{product.name}}</p>
+  </div>
+</div>
 
 
 <h1>ngFor</h1>
@@ -14,6 +33,25 @@
   </li>
   
 </ul>
+
+<!-- la clase active nos sirve para poder activar algunas clases o otras clases-->
+<p class="mensaje-error" [class.invalid]="numeroInput.invalid">
+  Se necesita un valor.
+</p>
+<label >Nombre</label>
+<input type="text" required #numeroInput2 = "ngModel" [(ngModel)] =  "persona.Nombre"/>
+<!--El [style.font-style] nos es funcional para poder camibar los estilos que deseamos-->
+<p [style.font-style]="numeroInput2.invalid ? 'italic' : 'normal'">Texto Texto Texto</p>
+
+<!-- Cambiar el tamaño de una imagen dinamicamente -->
+<div>
+  <div>
+    <input type="text" [(ngModel)] =  "withImage"/>
+  </div>
+  <div>
+    <img [width]="withImage" [src]="imagen" alt="Imagen">
+  </div>
+</div>
 
 <input type="text" required #numeroInput = "ngModel" [(ngModel)] =  "persona.Nombre"/>
 <p *ngIf="persona.Nombre === 'Manuel' ">Nombre: {{persona.Nombre}}</p>

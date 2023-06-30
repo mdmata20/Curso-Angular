@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+  withImage = 10;
+  imagen = './assets/images/toy.jpg';
+
   persona = {
     Nombre: "",
     edad: 0 
@@ -17,6 +19,8 @@ export class AppComponent {
 
   nombres: string[] = ["Manuel", "Josue", "Carlos", "Mario"];
   newname = '';
+
+
 
   products = [
     {
