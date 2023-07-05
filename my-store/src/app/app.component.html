@@ -1,0 +1,104 @@
+<h1>Formulario</h1>
+<form (ngSubmit)="onRegister();" #myForm = 'ngForm'>
+  <div class="input-group">
+    <label for="">Nombre: </label>
+    <input type="text" required id="nombre" #nameinput4 = "ngModel" name="Nombre" [(ngModel)]="register.nombre">
+    <p>Mensaje de error</p>
+  </div>
+  <div class="input-group">
+    <label for="">Correo: </label>
+    <input type="text" required id="correo" name="Correo" [(ngModel)]="register.correo">
+    <p>Mensaje de error</p>
+  </div>
+  <div class="input-group">
+    <label for="">contrasena: </label>
+    <input type="text" required name="contrasena" id="contrasena" [(ngModel)]="register.contrasena">
+    <p>Mensaje de error</p>
+  </div>
+  <button [disabled]="myForm.invalid"
+   type="submit">Registrar</button>
+  <button type="button"></button>
+</form>
+
+<h1>NGClass & NgStyle</h1>
+<input type="text" #nameinput4 = "ngModel" [(ngModel)] = "persona.Nombre"/>
+<hr class="line-error"  
+  [ngClass]="{
+    'valid': nameinput4.valid,
+    'invalid': nameinput4.invalid
+  }"
+/>
+<p class="mensaje-error" [class.invalid]="nameinput4.invalid">
+  Se necesita un valor.
+</p>
+
+<div class="style">
+  <div>
+    <input type="number" [(ngModel)] = "box.with"/>
+    <input type="number" [(ngModel)] = "box.height"/>
+    <input type="color" [(ngModel)] = "box.background"/>
+  </div>
+  <div>
+    <div [ngStyle]="{
+      'width.px': box.with,
+      'height.px': box.height,
+      'background.px': box.background,
+      'display': 'block'
+    }"></div>
+  </div>
+</div>
+
+<h1>Arreglos</h1>
+<div class="products--grid">
+  <div *ngFor="let product of products">
+    <img [width]="250" [src]="product.image" alt="imge">
+    <h2>{{product.price}}</h2>
+    <p>{{product.name}}</p>
+  </div>
+</div>
+
+
+<h1>ngFor</h1>
+<input type="text" required [(ngModel)] = "newname" />
+<button (click)="AgregarNombres()">Add Nombres</button>
+
+<ul>
+  <li *ngIf="nombres.length === 0">
+    Lista vacia
+  </li>
+  <li *ngFor="let name of nombres; index as i">{{i}} {{name}}
+    <button (click)="deleteUser(i)">Delete</button>
+  </li>
+  
+</ul>
+
+<!-- la clase active nos sirve para poder activar algunas clases o otras clases-->
+<p class="mensaje-error" [class.invalid]="numeroInput.invalid">
+  Se necesita un valor.
+</p>
+<label >Nombre</label>
+<input type="text" required #numeroInput2 = "ngModel" [(ngModel)] =  "persona.Nombre"/>
+<!--El [style.font-style] nos es funcional para poder camibar los estilos que deseamos-->
+<p [style.font-style]="numeroInput2.invalid ? 'italic' : 'normal'">Texto Texto Texto</p>
+
+<!-- Cambiar el tamaño de una imagen dinamicamente -->
+<div>
+  <div>
+    <input type="text" [(ngModel)] =  "withImage"/>
+  </div>
+  <div>
+    <img [width]="withImage" [src]="imagen" alt="Imagen">
+  </div>
+</div>
+
+<input type="text" required #numeroInput = "ngModel" [(ngModel)] =  "persona.Nombre"/>
+<p *ngIf="persona.Nombre === 'Manuel' ">Nombre: {{persona.Nombre}}</p>
+<p *ngIf="persona.Nombre === 'Carlos' ">Nombre: {{persona.Nombre}}</p>
+
+<h1>{{title}}</h1>
+<p>Nombre: {{persona.Nombre}}</p>
+<input type="text" required #nameImput = "ngModel" [(ngModel)] = "persona.Nombre"/>
+<p>valid: {{nameImput.valid}}</p>
+<p>Edad: {{persona.edad}}</p>
+<input type="number" max="18" min="10" required #ageInput = "ngModel" [(ngModel)] = "persona.edad"/>
+<p>valid: {{ageInput.valid}}</p>
