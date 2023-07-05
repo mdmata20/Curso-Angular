@@ -20,7 +20,20 @@ export class AppComponent {
   nombres: string[] = ["Manuel", "Josue", "Carlos", "Mario"];
   newname = '';
 
+  box = {
+    with: 100,
+    height: 100,
+    background: 'red'
+  }
 
+  nombre = 'Manuel';
+
+
+  register = {
+    nombre: '',
+    correo: '',
+    contrasena: ''
+  }
 
   products = [
     {
@@ -67,5 +80,10 @@ export class AppComponent {
 
   deleteUser(indice: number){
     this.nombres.splice(indice, 1);
+  }
+
+  onRegister() {
+    console.log('validos');
+    console.log(this.register);
   }
 }
